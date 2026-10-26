@@ -2,7 +2,6 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-# Prevent Python from writing pyc files & buffer output
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
@@ -13,5 +12,5 @@ COPY . .
 
 EXPOSE 8000
 
-# Run with multiple worker processes for production concurrency
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+# Run migrations first, then spin up the server
+CMD alembic upgrade head && uvicorn main:app --host 0.0.0.0 --port $PORT --workers 2
