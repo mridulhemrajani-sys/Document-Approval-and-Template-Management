@@ -1,14 +1,14 @@
 // import baseUrl from './api'
 import { apiRequest } from "./api"
 
-const baseUrl = "http://localhost:8000"
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"
 
 export default async function login(email, password){
     const formData = new URLSearchParams()
     formData.append("username",email)
     formData.append("password",password)
 
-        const response = await fetch (`${baseUrl}/login`, {
+        const response = await fetch (`${BASE_URL}/login`, {
             method:'POST',
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
