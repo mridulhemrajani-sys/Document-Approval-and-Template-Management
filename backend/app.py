@@ -6,7 +6,7 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",      # React dev server
     "http://localhost:5173",      # Vite dev server
-    "https://yourfrontend.com",   # Production frontend
+    "https://vercel.app",   # Production frontend
 ]
 
 app.add_middleware(
