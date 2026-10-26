@@ -11,7 +11,8 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,           # Allows requests from these origins
+    allow_origins=origins,     
+    allow_origin_regex=r"https://document-approval-and-template-management-.*\.vercel\.app",
     allow_credentials=True,          # Allows cookies/authentication headers
     allow_methods=["*"],             # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],             # Allows all headers
